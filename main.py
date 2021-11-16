@@ -25,7 +25,6 @@ def write_msg_photo(user_id, attachment):
     post = {'user_id': user_id, 'attachment': attachment, 'random_id': randrange(10 ** 7)}
     session.method('messages.send', post)
 
-count_search = 0
 data_search = {}
 
 def start():
@@ -171,12 +170,9 @@ def search(user_id):
         write_msg(user_id, f"https://vk.com/id{res[0]}")
     except TypeError:
         search(user_id)
-    action_with_he_result(id_user_vk, user_id)
-    # else:
-    #     write_msg(user_id, f"Нет или закончились подходящие варианты, нужно сменить параметры поиска")
-    #     changing_parameters(user_id)
+    action_with_the_result(id_user_vk, user_id)
 
-def action_with_he_result(id_user_vk, user_id):
+def action_with_the_result(id_user_vk, user_id):
     keyboard = VkKeyboard(one_time=True)
     keyboard.add_button('Поиск', VkKeyboardColor.POSITIVE)
     keyboard.add_button('Вернуться к смене параметров', VkKeyboardColor.PRIMARY)
@@ -198,7 +194,7 @@ def action_with_he_result(id_user_vk, user_id):
                 add_user_favourites(user_id, False, id_user_vk)
             else:
                 write_msg(user_id, "Ответ не понятен")
-            action_with_he_result(id_user_vk, user_id)
+            action_with_the_result(id_user_vk, user_id)
 
 def changing_parameters(user_id):
     keyboard = VkKeyboard(one_time=True)

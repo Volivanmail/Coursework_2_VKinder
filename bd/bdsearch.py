@@ -1,6 +1,5 @@
 import sqlalchemy
 from config import DNS
-# DNS = 'postgresql://forvk:123vk@localhost:5432/bd_user_vk'
 
 engine = sqlalchemy.create_engine(DNS)
 con = engine.connect()
@@ -14,8 +13,6 @@ def add_user(user_id):
         con.execute(""" COMMIT; """)
     except:
         pass
-
-
 
 def add_user_search(id_user_vk, user_id):
   con.execute(f"""
